@@ -3,16 +3,10 @@ package com.localbrand.service.impl;
 import com.localbrand.common.*;
 import com.localbrand.dto.request.ProductRequestDTO;
 import com.localbrand.dto.response.*;
-import com.localbrand.entity.Color;
-import com.localbrand.entity.Product;
-import com.localbrand.entity.ProductDetail;
-import com.localbrand.entity.User;
+import com.localbrand.entity.*;
 import com.localbrand.exception.Notification;
 import com.localbrand.model_mapping.Impl.ProductMapping;
-import com.localbrand.repository.ColorRepository;
-import com.localbrand.repository.ProductDetailRepository;
-import com.localbrand.repository.ProductRepository;
-import com.localbrand.repository.UserRepository;
+import com.localbrand.repository.*;
 import com.localbrand.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +28,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductDetailRepository productDetailRepository;
     private final ColorRepository colorRepository;
     private final UserRepository userRepository;
+    private final ProductTagRepository productTagRepository;
 
     @Transactional(rollbackFor = {Exception.class})
     @Override
@@ -45,11 +40,19 @@ public class ProductServiceImpl implements ProductService {
 
         product = this.productRepository.save(product);
 
+        List<Integer> listIdProductDetail = new ArrayList<>();
         for(ProductDetail productDetail: productDetailList){
             productDetail.setIdProduct(product.getIdProduct().intValue());
+            if(Objects.nonNull(productDetail.getIdProductDetail()) && productDetail.getQuantity() > 0){
+                listIdProductDetail.add(productDetail.getIdProductDetail().intValue());
+            }
         }
 
         this.productDetailRepository.saveAll(productDetailList);
+
+        List<ProductTag> tagList = this.productTagRepository.findAllByIdProductDetailAndIdTag(listIdProductDetail, Tag_Enum.OUT_OF_STOCK.getCode());
+
+        this.productTagRepository.deleteAll(tagList);
 
         return new ServiceResult<>(HttpStatus.OK, Notification.Product.SAVE_PRODUCT_SUCCESS, this.productMapping.toProductResponseDTO(product));
     }

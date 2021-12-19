@@ -33,11 +33,11 @@ public interface ProductSaleRepository extends JpaRepository<ProductSale, Long>,
     @Transactional
     @Modifying
     @Query(
-            "Update ProductSale ps set ps.idStatus = :nextStatus" +
+            "Delete from ProductSale ps " +
                     " where ps.idStatus = :prevStatus " +
                     " and ps.idProductDetail in :idProductDetail"
     )
-    void UpdateSaleByIdProductDetail(Integer prevStatus, Integer nextStatus, List<Integer> idProductDetail);
+    void DeleteSaleByIdProductDetail(Integer prevStatus, List<Integer> idProductDetail);
 
     Page<ProductSale> findAllByIdSale(Integer idSale, Pageable pageable);
 

@@ -1,12 +1,0 @@
-
-p
-java:S1602)"SRemove useless curly braces around statement and then remove useless return keyword(ß¿äû8Ø•ÓòÙ/
-b
-java:S1128"@Remove this unused import 'com.localbrand.entity.ProductDetail'.(ÎÆı”øÿÿÿÿ8Ø©•óÙ/
-_
-java:S1128"=Remove this unused import 'com.localbrand.entity.ProductTag'.(ğÓçÂúÿÿÿÿ8Ù©•óÙ/
-k
-java:S1128
-"NRemove this unused import 'com.localbrand.repository.ProductDetailRepository'.(œÜÆ¢8Ù©•óÙ/
-h
-java:S1128"KRemove this unused import 'com.localbrand.repository.ProductTagRepository'.(Ğ’® 8Ù©•óÙ/

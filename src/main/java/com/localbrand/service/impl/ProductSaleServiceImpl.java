@@ -70,7 +70,7 @@ public class ProductSaleServiceImpl implements ProductSaleService {
             );
             listProductDetailId.add(productSaleDetail.getIdProductDetail());
         }
-        this.productSaleRepository.UpdateSaleByIdProductDetail(Status_Enum.EXISTS.getCode(), Status_Enum.DELETE.getCode(),listProductDetailId);
+        this.productSaleRepository.DeleteSaleByIdProductDetail(Status_Enum.EXISTS.getCode(), listProductDetailId);
 
         productSales = this.productSaleRepository.saveAll(productSales);
 

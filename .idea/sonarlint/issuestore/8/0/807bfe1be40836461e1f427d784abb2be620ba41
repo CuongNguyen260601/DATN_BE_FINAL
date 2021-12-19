@@ -1,9 +1,0 @@
-
-[
-java:S1128"@Remove this unused import 'com.localbrand.entity.ProductDetail'.(ÎÆý”øÿÿÿÿ
-X
-java:S1128"=Remove this unused import 'com.localbrand.entity.ProductTag'.(ðÓçÂúÿÿÿÿ
-d
-java:S1128"NRemove this unused import 'com.localbrand.repository.ProductDetailRepository'.(œÜÆ¢
-a
-java:S1128"KRemove this unused import 'com.localbrand.repository.ProductTagRepository'.(Ð’® 
