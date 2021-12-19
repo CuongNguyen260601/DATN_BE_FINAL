@@ -127,8 +127,6 @@ f
 6src/main/java/com/localbrand/exception/ErrorCodes.java,2\6\26ad4a5652d559fb56953d497af0c50becd21a30
 p
 @src/main/java/com/localbrand/model_mapping/Impl/BillMapping.java,4\d\4d94c3d84e202042e33edf5fb3df26df8d7cb742
-w
-Gsrc/main/java/com/localbrand/model_mapping/Impl/BillProductMapping.java,4\b\4b583abc9999e5597c03226886ac05a223e7955a
 h
 8src/main/java/com/localbrand/exception/Notification.java,3\b\3bfa9b146e6276124c3bce3da0adfad01ffdd033
 n
@@ -263,12 +261,6 @@ e
 5src/main/java/com/localbrand/service/UserService.java,5\6\567602c2b135eba7c897e4f9b1c1dc4205ac1d7f
 n
 >src/main/java/com/localbrand/service/impl/UserServiceImpl.java,2\8\28c74436c4c76f67a8afc6c5df72b3737ffac1c4
-
-Osrc/main/java/com/localbrand/dto/response/statistical/SummaryStatusBillDTO.java,2\b\2bd6eae9d555e5da94f347591d53221f017a22b2
-n
->src/main/java/com/localbrand/service/impl/MailServiceImpl.java,1\0\10896e3fef26b170c33f42f615e12493f0994aec
-e
-5src/main/java/com/localbrand/service/MailService.java,8\c\8caf4bb5a16f7c82041a3f8a439b4702d01df35b
 k
 ;src/main/java/com/localbrand/controller/BillController.java,a\d\ad0b6bdd30db7e1f8d17e80fb99f2c297e430877
 y
@@ -293,10 +285,6 @@ p
 @src/main/java/com/localbrand/model_mapping/Impl/SaleMapping.java,3\4\34650e9db18db6b77783b90982febabf1e38af72
 s
 Csrc/main/java/com/localbrand/model_mapping/Impl/ProductMapping.java,0\2\02e449e1f983ae0df7dc610887fd618f354362ac
-l
-<src/main/java/com/localbrand/service/StatisticalService.java,e\4\e4b7ec9551d6766399bac04071a6e9a0e8ccec9e
-u
-Esrc/main/java/com/localbrand/service/impl/StatisticalServiceImpl.java,c\8\c8b2078e190ae807ef91efab5d35510488ef1954
 m
 =src/main/java/com/localbrand/filter/AuthenticationFilter.java,e\8\e8d0172fb263d3c9a8510705e4896032d8d3bb6f
 t
@@ -309,8 +297,6 @@ k
 ;src/main/java/com/localbrand/repository/BillRepository.java,b\3\b36b608283a05c90e527f04f549940256fb86fd8
 e
 5src/main/java/com/localbrand/service/BillService.java,9\0\9020a37804f016f56be1d05ccfce58a2ce7ead6a
-n
->src/main/java/com/localbrand/service/impl/BillServiceImpl.java,6\2\62e5277d55b96e5a8427f9a0faf2fbe88ddd16e1
 n
 >src/main/java/com/localbrand/repository/VoucherRepository.java,2\0\2057b8f2b34064888acf2ce4f2332d5fac5848fa
 k

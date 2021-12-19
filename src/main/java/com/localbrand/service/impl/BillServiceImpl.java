@@ -13,7 +13,6 @@ import com.localbrand.model_mapping.Impl.BillProductMapping;
 import com.localbrand.repository.*;
 import com.localbrand.service.BillService;
 import com.localbrand.service.MailService;
-import com.localbrand.utils.Role_Utils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -22,8 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -160,9 +157,10 @@ public class BillServiceImpl implements BillService {
                 this.voucherUserRepository.save(voucherDonateUser);
             }
         }
+
         if(Objects.nonNull(voucher))
         {
-            total = total/100 * (100 - voucher.getDiscount());
+            total =Math.round(total/100 * (100 - voucher.getDiscount()));
         }
 
         bill.setTotal(total);

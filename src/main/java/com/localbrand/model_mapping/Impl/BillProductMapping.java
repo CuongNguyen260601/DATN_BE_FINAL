@@ -73,7 +73,7 @@ public class BillProductMapping implements Mapping<BillProductResponseDTO, BillP
                     if (Objects.nonNull(productSale)) {
                         Sale sale = this.saleRepository.findById(productSale.getIdSale().longValue()).orElse(null);
                         if (Objects.nonNull(sale)) {
-                            price = price / 100 * (100 - sale.getDiscount());
+                            price = Math.round(price / 100 * (100 - sale.getDiscount()));
                         }
                     }
 
