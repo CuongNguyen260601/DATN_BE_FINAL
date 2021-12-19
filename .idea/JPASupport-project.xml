@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoGeneratorSettingsState">
+    <option name="ignoredFields">
+      <set>
+        <option value="" />
+      </set>
+    </option>
+    <option name="moduleName" value="LocalBrand_TPF_BE_Final" />
+    <option name="moduleNameToSettings">
+      <map>
+        <entry key="LocalBrand_TPF_BE_Final">
+          <value>
+            <ModuleSettings>
+              <option name="controllerParentDirectory" value="$PROJECT_DIR$/src/main/java" />
+              <option name="dtoParentDirectory" value="$PROJECT_DIR$/src/main/java" />
+              <option name="entityPackageName" value="com.localbrand.entity" />
+              <option name="entityParentDirectory" value="D:\DuAnTotNghiep\DATN_BE\LocalBrand_TPF_BE_Final\src\main\java" />
+              <option name="generateRepository" value="false" />
+              <option name="mapperXmlParentDirectory" value="D:\DuAnTotNghiep\DATN_BE\LocalBrand_TPF_BE_Final\src\main\resources" />
+              <option name="repositoryPackageName" value="com.localbrand.repository" />
+              <option name="repositoryParentDirectory" value="$PROJECT_DIR$/../demo_oauth2/src/main/java/" />
+              <option name="serviceParentDirectory" value="$PROJECT_DIR$/src/main/java" />
+              <option name="voParentDirectory" value="$PROJECT_DIR$/src/main/java" />
+            </ModuleSettings>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="DatabaseSettingsState">
+    <option name="database" value="db_du_an_tot_nghiep" />
+    <option name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+    <option name="driverPath" value="C:\Users\admin\.m2\repository\com\microsoft\sqlserver\mssql-jdbc\9.2.1.jre8\mssql-jdbc-9.2.1.jre8.jar" />
+    <option name="port" value="1433" />
+    <option name="url" value="jdbc:sqlserver://localhost:1433;database=db_du_an_tot_nghiep" />
+    <option name="username" value="NTC260601" />
+  </component>
+</project>

@@ -1,0 +1,57 @@
+
+m
+java:S3776:"RRefactor this method to reduce its Cognitive Complexity from 84 to the 15 allowed.(‹€¾¦øÿÿÿÿ
+Z
+java:S1854L"?Remove this useless assignment to local variable "listProduct".(…˜Òÿÿÿÿÿ
+i
+java:S3776’"RRefactor this method to reduce its Cognitive Complexity from 84 to the 15 allowed.(Áç
+\
+java:S1854¨"ERemove this useless assignment to local variable "listProductDetail".(Ö¿ÒÖ
+n
+java:S3776Ã"RRefactor this method to reduce its Cognitive Complexity from 58 to the 15 allowed.(îÊÌ®øÿÿÿÿ
+?
+java:S1604û"(Make this anonymous inner class a lambda(‘ÇÙŸ
+?
+java:S1604†"(Make this anonymous inner class a lambda(‘ÇÙŸ
+l
+java:S3655í"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(Šöùíúÿÿÿÿ
+a
+java:S3655¢"JCall "limit.isPresent()" or "!limit.isEmpty()" before accessing the value.(ÄÜÚü
+l
+java:S3655ß"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(Ø´›àüÿÿÿÿ
+z
+java:S3655˜"^Call "idProductDetail.isPresent()" or "!idProductDetail.isEmpty()" before accessing the value.(ÂÃùÿÿÿÿ
+a
+java:S3655´"JCall "limit.isPresent()" or "!limit.isEmpty()" before accessing the value.(ÄÜÚü
+a
+java:S3655Ğ"JCall "limit.isPresent()" or "!limit.isEmpty()" before accessing the value.(ÄÜÚü
+_
+java:S3655ú"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(øƒŞ•
+g
+java:S3655ë"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(ˆÒ¥
+l
+java:S3655ß"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(Ø´›àüÿÿÿÿ
+n
+java:S3655ù"RCall "idProduct.isPresent()" or "!idProduct.isEmpty()" before accessing the value.(ı¸â÷ıÿÿÿÿ
+g
+java:S3655İ"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(ˆÒ¥
+l
+java:S3655í"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(Šöùíúÿÿÿÿ
+l
+java:S3655×"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(ÏÛãºûÿÿÿÿ
+g
+java:S3655Ù"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(‚ºß
+g
+java:S3655İ"PCall "maxPrice.isPresent()" or "!maxPrice.isEmpty()" before accessing the value.(ˆÒ¥
+l
+java:S3655×"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(ÏÛãºûÿÿÿÿ
+c
+java:S3655E"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(©Œ‹Çùÿÿÿÿ
+n
+java:S3655…"RCall "idProduct.isPresent()" or "!idProduct.isEmpty()" before accessing the value.(ı¸â÷ıÿÿÿÿ
+d
+java:S3655¡"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(©Œ‹Çùÿÿÿÿ
+g
+java:S3655Ù"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(‚ºß
+g
+java:S3655ë"PCall "minPrice.isPresent()" or "!minPrice.isEmpty()" before accessing the value.(ˆÒ¥

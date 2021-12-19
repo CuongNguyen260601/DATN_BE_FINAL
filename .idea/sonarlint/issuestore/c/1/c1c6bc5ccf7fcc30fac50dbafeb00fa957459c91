@@ -1,0 +1,38 @@
+
+W
+java:S34576"AFormat specifiers should be used instead of string concatenation.(êò°Œ
+Q	java:S125>"<This block of commented-out lines of code should be removed.(ë•ý†
+<
+java:S3864g"!Remove this use of "Stream.peek".(ÖÉ¤‹ûÿÿÿÿ
+T
+java:S1854‡"=Remove this useless assignment to local variable "listCombo".(¥ª¤á
+\
+java:S3457x"AFormat specifiers should be used instead of string concatenation.(¬™°ïøÿÿÿÿ
+X
+java:S3457–"AFormat specifiers should be used instead of string concatenation.(û‰Î
+X
+java:S3457©"AFormat specifiers should be used instead of string concatenation.(îÔÌ
+B
+java:S1602¼",Remove useless curly braces around statement(Ô‡0
+X
+java:S3457Ø"AFormat specifiers should be used instead of string concatenation.(ÛÉ·‚
+X
+java:S3457è"AFormat specifiers should be used instead of string concatenation.(è€É¤
+M
+java:S26296"7Use the built-in formatting to construct this argument.(êò°Œ
+R
+java:S2629x"7Use the built-in formatting to construct this argument.(¬™°ïøÿÿÿÿ
+N
+java:S2629–"7Use the built-in formatting to construct this argument.(û‰Î
+N
+java:S2629©"7Use the built-in formatting to construct this argument.(îÔÌ
+N
+java:S2629Ø"7Use the built-in formatting to construct this argument.(ÛÉ·‚
+N
+java:S2629è"7Use the built-in formatting to construct this argument.(è€É¤
+a
+java:S3655œ"JCall "limit.isPresent()" or "!limit.isEmpty()" before accessing the value.(ÄÜÚü
+d
+java:S3655€"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(©Œ‹Çùÿÿÿÿ
+e
+java:S3655Þ"NCall "idCombo.isPresent()" or "!idCombo.isEmpty()" before accessing the value.(¡òÝŠ

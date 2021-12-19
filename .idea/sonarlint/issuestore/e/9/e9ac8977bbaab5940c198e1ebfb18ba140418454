@@ -1,0 +1,13 @@
+
+M
+java:S3416"2Update this logger to use "SaleServiceImpl.class".(„œÈüÿÿÿÿ
+\
+java:S3457`"AFormat specifiers should be used instead of string concatenation.(²¥äùÿÿÿÿ
+W
+java:S3457u"AFormat specifiers should be used instead of string concatenation.(ÖØËÑ
+R
+java:S2629`"7Use the built-in formatting to construct this argument.(²¥äùÿÿÿÿ
+M
+java:S2629u"7Use the built-in formatting to construct this argument.(ÖØËÑ
+c
+java:S3655;"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(©Œ‹Çùÿÿÿÿ

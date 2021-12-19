@@ -1,0 +1,5 @@
+
+l	java:S116"WRename this field "access_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(µäøª
+m	java:S116"XRename this field "refresh_token" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¢´õŽ
+A
+java:S1128"+Remove this unused import 'lombok.Builder'.(§’Ðß

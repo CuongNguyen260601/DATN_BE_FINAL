@@ -1,0 +1,11 @@
+
+A
+java:S1452"&Remove usage of generic wildcard type.(ı«ì­üÿÿÿÿ
+A
+java:S1452""&Remove usage of generic wildcard type.(ºñÿüıÿÿÿÿ
+P
+java:S1128":Remove this unused import 'javax.mail.MessagingException'.(ÇîŞ
+K
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ
+F
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ

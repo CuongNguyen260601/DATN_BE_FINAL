@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo-oauth2" />
+        <module name="LocalBrand_TPF_BE_Final" />
+        <module name="LocalBrand_TPF_BE_Final_Schedule" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Cuongntph11602_Assignment_Backend" target="11" />
+      <module name="Cuongntph11602_Assignment_BE" target="11" />
+      <module name="defi-user-service" target="1.8" />
+      <module name="demo-oauth2" target="1.8" />
+      <module name="demo_oauth2" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Cuongntph11602_Assignment_Backend" options="-parameters -Amapstruct.defaultComponentModel=spring" />
+      <module name="LocalBrand_TPF_BE_Final" options="-parameters" />
+      <module name="LocalBrand_TPF_BE_Final_Schedule" options="-parameters" />
+      <module name="defi-user-service" options="-parameters" />
+      <module name="demo_oauth2" options="-parameters" />
+    </option>
+  </component>
+</project>

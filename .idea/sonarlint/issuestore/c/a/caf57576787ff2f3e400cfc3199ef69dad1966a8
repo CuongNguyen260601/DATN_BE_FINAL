@@ -1,0 +1,19 @@
+
+W
+java:S3457*"AFormat specifiers should be used instead of string concatenation.(ÂŠµž
+7
+java:S3864>"!Remove this use of "Stream.peek".(²²‚×
+R
+java:S1854‹";Remove this useless assignment to local variable "listNew".(ì±öÓ
+R
+java:S1854›";Remove this useless assignment to local variable "listNew".(ì±öÓ
+g
+java:S1192…"KDefine a constant instead of duplicating this literal "dateCreate" 3 times.(“ÅÈìûÿÿÿÿ
+M
+java:S2629*"7Use the built-in formatting to construct this argument.(ÂŠµž
+g
+java:S3655N"LCall "idNews.isPresent()" or "!idNews.isEmpty()" before accessing the value.(Õƒëöøÿÿÿÿ
+a
+java:S3655™"JCall "limit.isPresent()" or "!limit.isEmpty()" before accessing the value.(Ù…¶Ä
+d
+java:S3655„"HCall "sort.isPresent()" or "!sort.isEmpty()" before accessing the value.(©Œ‹Çùÿÿÿÿ

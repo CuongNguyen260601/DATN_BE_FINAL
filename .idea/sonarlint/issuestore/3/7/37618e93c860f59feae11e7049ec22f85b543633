@@ -1,0 +1,48 @@
+
+^
+java:S1214"CMove constants defined in this interfaces to another class or enum.(Êß±Äıÿÿÿÿ
+Y
+java:S1214"CMove constants defined in this interfaces to another class or enum.(²¶Éõ
+Y
+java:S1214"CMove constants defined in this interfaces to another class or enum.(öª­ç
+^
+java:S1214%"CMove constants defined in this interfaces to another class or enum.(Ã¸ù¥ıÿÿÿÿ
+Y
+java:S12142"CMove constants defined in this interfaces to another class or enum.(ë¼«
+^
+java:S1214@"CMove constants defined in this interfaces to another class or enum.(áí¤¹şÿÿÿÿ
+^
+java:S1214M"CMove constants defined in this interfaces to another class or enum.(ÇÏâîûÿÿÿÿ
+Y
+java:S1214W"CMove constants defined in this interfaces to another class or enum.(ØÉêª
+X
+java:S1214d"CMove constants defined in this interfaces to another class or enum.(ş‘Ï:
+X
+java:S1214{"CMove constants defined in this interfaces to another class or enum.(§ù«\
+Z
+java:S1214‚"CMove constants defined in this interfaces to another class or enum.(‡ôŒ©
+_
+java:S1214‰"CMove constants defined in this interfaces to another class or enum.(œŠÚËüÿÿÿÿ
+Z
+java:S1214œ"CMove constants defined in this interfaces to another class or enum.(ÁÂ­í
+_
+java:S1214¢"CMove constants defined in this interfaces to another class or enum.(›—¿‚ıÿÿÿÿ
+_
+java:S1214¦"CMove constants defined in this interfaces to another class or enum.(ª…÷«üÿÿÿÿ
+_
+java:S1214²"CMove constants defined in this interfaces to another class or enum.(ÏØ…úÿÿÿÿ
+Z
+java:S1214¹"CMove constants defined in this interfaces to another class or enum.(Ëï²¿
+_
+java:S1214Ä"CMove constants defined in this interfaces to another class or enum.(ú…„Úùÿÿÿÿ
+_
+java:S1214Ë"CMove constants defined in this interfaces to another class or enum.(ï—à®ùÿÿÿÿ
+Z
+java:S1214Ğ"CMove constants defined in this interfaces to another class or enum.(ˆÄÛÈ
+.
+java:S1700"Rename field "CORS"(ä’Ş•ùÿÿÿÿ
+k	java:S114"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Çö¤«úÿÿÿÿ
+k	java:S114M"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÇÏâîûÿÿÿÿ
+f	java:S114W"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ØÉêª
+e	java:S114{"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(§ù«\
+g	java:S114‚"QRename this interface name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‡ôŒ©
