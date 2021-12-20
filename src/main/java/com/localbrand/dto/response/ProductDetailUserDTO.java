@@ -45,4 +45,6 @@ public class ProductDetailUserDTO extends ProductParentResponseDTO{
 
     private Integer like;
 
+    private float priceSale;
+
 }

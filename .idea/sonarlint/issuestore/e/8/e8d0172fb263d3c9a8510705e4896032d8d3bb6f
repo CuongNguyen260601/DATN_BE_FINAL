@@ -1,7 +1,0 @@
-
-k	java:S117S"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ž¤ØÇøÿÿÿÿ
-k	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àý©‘ùÿÿÿÿ
-\
-java:S2184h"FCast one of the operands of this multiplication operation to a "long".(±—‚Í
-c
-java:S2259`"HA "NullPointerException" could be thrown; "userEntity" is nullable here.(Ø•ˆøûÿÿÿÿ

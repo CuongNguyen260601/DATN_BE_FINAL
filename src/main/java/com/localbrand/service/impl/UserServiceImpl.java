@@ -82,6 +82,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 //
 //        user.setIdRole(Role_Id_Enum.ROLE_USER.getId());
 
+        if(Objects.isNull(userRequestDTO.getIdUser())){
+            User userExists = this.userRepository.findFirstByEmailEqualsIgnoreCase(userRequestDTO.getEmail().trim()).orElse(null);
+            if(Objects.nonNull(userExists)){
+                return new ServiceResult<>(HttpStatus.BAD_REQUEST, "Sign up is false", null);
+            }
+            User userExistsPhone = this.userRepository.findFirstByPhoneNumber(userRequestDTO.getPhoneNumber().trim()).orElse(null);
+            if(Objects.nonNull(userExistsPhone)){
+                return new ServiceResult<>(HttpStatus.BAD_REQUEST, "Sign up is false", null);
+            }
+        }
         user = this.userRepository.save(user);
 
         Algorithm algorithm = Algorithm.HMAC256(Security_Enum.SECRET.getSecret().getBytes());

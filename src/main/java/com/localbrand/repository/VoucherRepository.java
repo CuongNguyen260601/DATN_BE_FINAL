@@ -35,4 +35,11 @@ public interface VoucherRepository extends JpaRepository<Voucher, Long>, JpaSpec
             nativeQuery = true
     )
     Optional<Voucher> findFirstByDonate(Integer idStatus, Float condition);
+
+    @Query(
+            value = "select top 1 * from _Voucher " +
+                    "    where lower(nameVoucher) = lower(:nameVoucher)",
+            nativeQuery = true
+    )
+    Optional<Voucher> findFirstByNameVoucher(String nameVoucher);
 }

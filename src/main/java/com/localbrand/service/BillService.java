@@ -27,7 +27,7 @@ public interface BillService {
 
     ServiceResult<List<BillResponseDTO>> getAllListBillAdmin(Optional<Integer> page, Optional<Integer> billType,Optional<Integer> limit);
 
-    ServiceResult<List<BillResponseDTO>> getListBillAndSortAdmin(Optional<Integer> page, Optional<Integer> limit, Optional<Integer> sort, Optional<Integer> idStatus, Optional<Date> startDate, Optional<Date> endDate);
+    ServiceResult<List<BillResponseDTO>> getListBillAndSortAdmin(Optional<Integer> page, Optional<Integer> limit, Optional<Integer> sort, Optional<Integer> idStatus, Optional<Date> startDate, Optional<Date> endDate, Optional<Integer> billType);
 
     ServiceResult<BillDetailResponseDTO> getBillDetailByBillAdmin(Optional<Integer> idBill);
 

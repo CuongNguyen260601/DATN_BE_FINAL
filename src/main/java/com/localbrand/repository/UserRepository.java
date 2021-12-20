@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
 
     Optional<User> findFirstByEmailEqualsIgnoreCase(String email);
+    Optional<User> findFirstByPhoneNumber(String phoneNumber);
 }

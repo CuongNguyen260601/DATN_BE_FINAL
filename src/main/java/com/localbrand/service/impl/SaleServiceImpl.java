@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -98,6 +99,12 @@ public class SaleServiceImpl implements SaleService{
         try {
             Sale sale = this.saleMapping.toEntity(saleDTO);
 
+            if(Objects.isNull(saleDTO.getIdSale())){
+                Sale saleExists = this.saleRepository.findFirstByNameSale(saleDTO.getNameSale().trim().toLowerCase()).orElse(null);
+                if(Objects.nonNull(saleExists)){
+                    return new ServiceResult<>(HttpStatus.BAD_REQUEST, Notification.Sale.SAVE_SALE_FALSE, null);
+                }
+            }
             Sale saleSaved = this.saleRepository.save(sale);
 
             return new ServiceResult<>(HttpStatus.OK, Notification.Sale.SAVE_SALE_SUCCESS, this.saleMapping.toResponseDto(saleSaved));

@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Optional;
+
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 
     @Query(
@@ -74,14 +76,14 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 
     @Query(
             value = "select * from _Product p where p.idProduct in ( " +
-                    "    select distinct (p.idProduct) from _Product p " +
-                    "                      join _Product_Detail pd on p.idProduct = pd.idProduct " +
-                    "                      join _Product_Sale ps on ps.idProductDetail = ps.idProductDetail " +
-                    "    where p.idStatus = :idStatusP " +
-                    "      and pd.idStatus = :idStatusPd " +
-                    "      and ps.idStatus = :idStatusPs " +
-                    "      and ps.dateEnd >= (getdate()) " +
-                    "    )",
+                    "                    select distinct (p1.idProduct) from _Product_Sale ps " +
+                    "                                         join _Product_Detail pd on ps.idProductDetail = pd.idProductDetail " +
+                    "                                         join _Product p1 on pd.idProduct = p1.idProduct " +
+                    "                        where p1.idStatus = :idStatusP " +
+                    "                          and pd.idStatus = :idStatusPd " +
+                    "                          and ps.idStatus = :idStatusPs " +
+                    "                          and ps.dateEnd >= (getdate()) " +
+                    "                        )",
             nativeQuery = true
     )
     Page<Product> findAllByIsSale(Integer idStatusP, Integer idStatusPd, Integer idStatusPs, Pageable pageable);
@@ -217,7 +219,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
     @Query(
             "select p from Product p " +
                     " where p.idStatus = 2 " +
-                    " order by p.dateCreate desc"
+                    " order by p.idProduct desc"
     )
     Page<Product> findAllProductNew(Pageable pageable);
 
@@ -241,4 +243,10 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
     )
     Page<Product> findProductLikeByIdUser(Integer userId, Pageable pageable);
 
+    @Query(
+            value = "select top 1 * from _Product " +
+                    "    where lower(nameProduct) = lower(:nameProduct)",
+            nativeQuery = true
+    )
+    Optional<Product> findFirstByNameProduct(String nameProduct);
 }

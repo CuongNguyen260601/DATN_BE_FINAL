@@ -25,4 +25,8 @@ public class ProductShowUserResponseDTO extends ProductParentResponseDTO{
     private Boolean isLike;
 
     private List<ProductChildResponseDTO> listProductSale;
+
+    private List<Integer> listColorSale;
+
+    private List<Integer> listSizeSale;
 }

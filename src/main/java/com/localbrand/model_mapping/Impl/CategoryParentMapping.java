@@ -31,7 +31,7 @@ public class CategoryParentMapping implements Mapping<CategoryParentDTO, Categor
         CategoryParentDTO categoryParentDTO = CategoryParentDTO
                 .builder()
                 .idCategory(category.getIdCategory())
-                .nameCategory(category.getNameCategory())
+                .nameCategory(category.getNameCategory().trim())
                 .idStatus(category.getIdStatus())
                 .build();
         if(!Objects.isNull(listCategory))
@@ -46,7 +46,7 @@ public class CategoryParentMapping implements Mapping<CategoryParentDTO, Categor
                 .builder()
                 .idCategory(categoryParentDTO.getIdCategory())
                 .parentId(null)
-                .nameCategory(categoryParentDTO.getNameCategory())
+                .nameCategory(categoryParentDTO.getNameCategory().trim())
                 .idStatus(categoryParentDTO.getIdStatus())
                 .build();
     }
@@ -57,7 +57,7 @@ public class CategoryParentMapping implements Mapping<CategoryParentDTO, Categor
                 .builder()
                 .idCategory(categoryChildDTO.getIdCategory())
                 .parentId(parentId)
-                .nameCategory(categoryChildDTO.getNameCategory())
+                .nameCategory(categoryChildDTO.getNameCategory().trim())
                 .idStatus(categoryChildDTO.getIdStatus())
                 .build();
     }

@@ -3,7 +3,6 @@ package com.localbrand.service.impl;
 import com.localbrand.common.ServiceResult;
 import com.localbrand.common.Status_Enum;
 import com.localbrand.dto.request.CancelSaleRequestDTO;
-import com.localbrand.dto.request.ProductSaleCancelRequestDTO;
 import com.localbrand.dto.request.ProductSaleDetail;
 import com.localbrand.dto.request.ProductSaleRequestDTO;
 import com.localbrand.dto.response.*;
@@ -21,11 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,6 +43,10 @@ public class ProductSaleServiceImpl implements ProductSaleService {
         Sale sale = this.saleMapping.toEntity(productSaleRequestDTO.getSale());
 
         if(Objects.isNull(sale.getIdSale())){
+            Sale saleExists = this.saleRepository.findFirstByNameSale(sale.getNameSale().trim().toLowerCase()).orElse(null);
+            if(Objects.nonNull(saleExists)){
+                return new ServiceResult<>(HttpStatus.BAD_REQUEST, "Save sale is false", null);
+            }
             sale = this.saleRepository.save(sale);
         }else{
             sale = this.saleRepository.save(sale);

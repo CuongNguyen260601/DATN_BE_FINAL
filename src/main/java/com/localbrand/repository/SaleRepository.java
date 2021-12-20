@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Optional;
+
 public interface SaleRepository extends JpaRepository<Sale, Long>, JpaSpecificationExecutor<Sale> {
     Page<Sale> findAll(Pageable pageable);
 
@@ -25,4 +27,11 @@ public interface SaleRepository extends JpaRepository<Sale, Long>, JpaSpecificat
              " where s.idStatus = 2 and ps.idStatus = 2 and p.idProductDetail = :idProductDetail)"
     )
     Sale findSaleByProductDetail(Long idProductDetail);
+
+    @Query(
+            value = "select top 1 * from _Sale " +
+                    "    where lower(nameSale) = lower(:nameSale) ",
+            nativeQuery = true
+    )
+    Optional<Sale> findFirstByNameSale(String nameSale);
 }

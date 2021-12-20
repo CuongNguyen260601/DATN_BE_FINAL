@@ -93,6 +93,7 @@ public interface Interface_API {
                 String CATEGORY_CHILD_SEARCH = "/admin/categories/child/search";
                 String CATEGORY_CHILD_FIND_BY_STATUS = "/admin/categories/child/findbystatus";
                 String CATEGORY_CHILD_FIND_BY_PARENT_ID = "/admin/categories/child/findbyparent/{parentId}";
+                String CATEGORY_CHILD_FIND_BY_PARENT_ID_USER = "/user/categories/child/findbyparent/{parentId}";
                 String CATEGORY_CHILD_FIND_ALL_BY_PARENT_ID = "/admin/categories/child/findallbyparent/{parentId}";
             }
         }

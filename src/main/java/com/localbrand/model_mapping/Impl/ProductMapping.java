@@ -227,7 +227,7 @@ public class ProductMapping implements Mapping<ProductRequestDTO, Product> {
                 .dateCreate(product.getDateCreate())
                 .totalProduct(product.getTotalProduct())
                 .idStatus(product.getIdStatus())
-                .descriptionProduct(product.getDescriptionProduct())
+                .descriptionProduct(product.getDescriptionProduct().substring(0, Math.min(product.getDescriptionProduct().length(), 20))+(product.getDescriptionProduct().length() > 0 ? "...":""))
                 .coverPhoto(product.getCoverPhoto())
                 .frontPhoto(product.getFrontPhoto())
                 .backPhoto(product.getBackPhoto())
@@ -309,13 +309,17 @@ public class ProductMapping implements Mapping<ProductRequestDTO, Product> {
         List<ProductDetail> productDetails = this.productDetailRepository.findAllByIdProductSale(product.getIdProduct().intValue(), Status_Enum.EXISTS.getCode(), Status_Enum.EXISTS.getCode());
 
         List<ProductChildResponseDTO> productChildResponseDTOS = new ArrayList<>();
-
+        List<Integer> listColorSale = new ArrayList<>();
+        List<Integer> listSizeSale = new ArrayList<>();
         for (ProductDetail productDetail : productDetails) {
             ProductChildResponseDTO productChildResponseDTO = this.toProductChild(productDetail);
             productChildResponseDTOS.add(productChildResponseDTO);
+            listColorSale.add(productDetail.getIdColor());
+            listSizeSale.add(productDetail.getIdSize());
         }
         productShowUserResponseDTO.setListProductSale(productChildResponseDTOS);
-
+        productShowUserResponseDTO.setListColorSale(listColorSale);
+        productShowUserResponseDTO.setListSizeSale(listSizeSale);
         Gender gender = this.genderRepository.findByIdProduct(product.getIdProduct());
         GenderDTO genderDTO = GenderDTO.builder()
                 .idGender(gender.getIdGender())
@@ -528,8 +532,10 @@ public class ProductMapping implements Mapping<ProductRequestDTO, Product> {
             productDetailUserDTO.setDateCreate(productDetail.getDateCreate());
             productDetailUserDTO.setDetailPhoto(productDetail.getDetailPhoto());
             productDetailUserDTO.setColorDTO(this.colorMapping.toDto(color));
-            if(Objects.nonNull(sale))
+            if(Objects.nonNull(sale)) {
                 productDetailUserDTO.setSaleDTO(this.saleMapping.toDto(sale));
+                productDetailUserDTO.setPriceSale(Math.round(productDetail.getPrice()*(100-sale.getDiscount())/100));
+            }
 
             List<Integer> listTag = this.tagRepository.findByIdProductDetail(productDetail.getIdProductDetail());
 

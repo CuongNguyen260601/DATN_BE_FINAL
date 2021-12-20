@@ -170,4 +170,12 @@ public class CategoryController {
                 .status(result.getStatus().value())
                 .body(result);
     }
+
+    @GetMapping(Interface_API.API.Category.Category_Child.CATEGORY_CHILD_FIND_BY_PARENT_ID_USER)
+    public ResponseEntity<ServiceResult<List<CategoryChildDTO>>> getAllCategoryByParentIdUser(@PathVariable Optional<Integer> parentId){
+        ServiceResult<List<CategoryChildDTO>> result = this.categoryService.getAllCategoryChildByParentId(parentId);
+        return ResponseEntity
+                .status(result.getStatus().value())
+                .body(result);
+    }
 }

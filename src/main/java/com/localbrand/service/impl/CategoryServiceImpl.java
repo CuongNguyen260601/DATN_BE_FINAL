@@ -18,10 +18,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -130,6 +128,12 @@ public class CategoryServiceImpl  implements CategoryService{
         try {
                 Category category = this.categoryParentMapping.toEntity(categoryDTO);
 
+                if(Objects.isNull(categoryDTO.getIdCategory())){
+                    Category categoryExists = this.categoryRepository.findFirstByNameCategoryParent(categoryDTO.getNameCategory().trim().toLowerCase()).orElse(null);
+                    if(Objects.nonNull(categoryExists)){
+                        return new ServiceResult<>(HttpStatus.BAD_REQUEST, Notification.Category.SAVE_CATEGORY_PARENT_FALSE, null);
+                    }
+                }
                 Category categoryParentSave = this.categoryRepository.save(category);
 
                 if (!Objects.isNull(categoryDTO.getListCategoryChildDTO())) {
@@ -193,7 +197,7 @@ public class CategoryServiceImpl  implements CategoryService{
 
         Pageable pageable = PageRequest.of(page.orElse(0), Config_Enum.SIZE_PAGE.getCode());
 
-        List<Category> listCategory = this.categoryRepository.findAllByParentIdIsNullAndNameCategoryLike("%"+nameCategory+"%", pageable).toList();
+        List<Category> listCategory = this.categoryRepository.findAllByNameCategoryLikeAndParentIdIsNull("%"+nameCategory+"%", pageable).toList();
 
         List<CategoryParentDTO> listCategoryParent = new ArrayList<>();
 
@@ -316,7 +320,12 @@ public class CategoryServiceImpl  implements CategoryService{
 
         try {
                 Category category = this.categoryChildMapping.toEntity(categoryChildDTO);
-
+                if(Objects.isNull(categoryChildDTO.getIdCategory())){
+                    Category categoryExists = this.categoryRepository.findFirstByNameCategoryChild(categoryChildDTO.getNameCategory().trim().toLowerCase()).orElse(null);
+                    if(Objects.nonNull(categoryExists)){
+                        return new ServiceResult<>(HttpStatus.BAD_REQUEST, Notification.Category.SAVE_CATEGORY_PARENT_FALSE, null);
+                    }
+                }
                 Category categorySaved = this.categoryRepository.save(category);
 
                 return new ServiceResult<>(HttpStatus.OK, Notification.Category.SAVE_CATEGORY_CHILD_SUCCESS, this.categoryChildMapping.toDto(categorySaved));

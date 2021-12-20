@@ -22,7 +22,7 @@ public class ColorMapping implements Mapping<ColorDTO, Color>{
         return Color
                 .builder()
                 .idColor(colorDTO.getIdColor())
-                .nameColor(colorDTO.getNameColor())
+                .nameColor(colorDTO.getNameColor().trim())
                 .idStatus(colorDTO.getIdStatus())
                 .build();
     }

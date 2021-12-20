@@ -1,6 +1,0 @@
-
-i
-java:S3776ö"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¦šÖ¸
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(éŽ¶œ
-a
-java:S2259‰"EA "NullPointerException" could be thrown; "product" is nullable here.(ã’ý®þÿÿÿÿ

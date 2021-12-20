@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>, JpaSpecificationExecutor<Category> {
     Page<Category> findAllByParentIdIsNull(Pageable pageable);
@@ -16,7 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long>, JpaSp
 
     Page<Category> findAllByParentId(Integer parentId, Pageable pageable);
 
-    Page<Category> findAllByParentIdIsNullAndNameCategoryLike(String name, Pageable pageable);
+    Page<Category> findAllByNameCategoryLikeAndParentIdIsNull(String name, Pageable pageable);
 
     Page<Category> findAllByParentIdIsNullAndIdStatus(Integer idStatus, Pageable pageable);
 
@@ -50,4 +51,20 @@ public interface CategoryRepository extends JpaRepository<Category, Long>, JpaSp
                     " where p.idProduct = :idProduct)"
     )
     Category findCategoryChildByIdProduct(Long idProduct);
+
+    @Query(
+            value = "select top 1 * from _Category "+
+            " where parentId is null "+
+            " and lower(nameCategory) = lower(:nameCategory)",
+            nativeQuery = true
+    )
+    Optional<Category> findFirstByNameCategoryParent(String nameCategory);
+
+    @Query(
+            value = "select top 1 * from _Category "+
+                    " where parentId is null "+
+                    " and lower(nameCategory) = lower(:nameCategory)",
+            nativeQuery = true
+    )
+    Optional<Category> findFirstByNameCategoryChild(String nameCategory);
 }

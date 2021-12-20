@@ -4,10 +4,7 @@ import com.localbrand.common.*;
 import com.localbrand.dto.request.ComboDetailRequestDTO;
 import com.localbrand.dto.request.ComboRequestDTO;
 import com.localbrand.dto.response.ComboResponseDTO;
-import com.localbrand.entity.Combo;
-import com.localbrand.entity.ComboDetail;
-import com.localbrand.entity.ComboTag;
-import com.localbrand.entity.ProductDetail;
+import com.localbrand.entity.*;
 import com.localbrand.exception.Notification;
 import com.localbrand.model_mapping.Impl.ComboDetailMapping;
 import com.localbrand.model_mapping.Impl.ComboMapping;
@@ -28,10 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,6 +50,38 @@ public class ComboServiceImpl implements ComboService {
         try {
 
             Combo combo = this.comboMapping.toEntity(comboRequestDTO);
+
+            if(Objects.isNull(combo.getIdCombo())){
+                Combo comboExists = this.comboRepository.findFirstByNameCombo(comboRequestDTO.getNameCombo().trim().toLowerCase()).orElse(null);
+                if(Objects.nonNull(comboExists)){
+                    return new ServiceResult<>(HttpStatus.BAD_REQUEST,Notification.Combo.SAVE_COMBO_FALSE, null);
+                }
+            }
+
+            if(Objects.nonNull(combo.getIdCombo())){
+                List<ComboDetail> comboDetailExists = this.comboDetailRepository.findAllByIdCombo(combo.getIdCombo().intValue());
+
+                List<Long> listProductDetailId = new ArrayList<>();
+
+                comboDetailExists.forEach(comboDetail -> {
+                    listProductDetailId.add(comboDetail.getIdProductDetail().longValue());
+                });
+
+                List<ProductDetail> productDetails = this.productDetailRepository.findAllByListIdProductDetail(listProductDetailId);
+
+                Combo comboExists = this.comboRepository.findById(combo.getIdCombo()).orElse(null);
+
+                if(Objects.nonNull(comboExists)){
+                    productDetails.forEach(productDetail -> {
+                        productDetail.setQuantity(productDetail.getQuantity()+comboExists.getQuantity());
+                    });
+                }else{
+                    return new ServiceResult<>(HttpStatus.BAD_REQUEST, "", null);
+                }
+
+                this.productDetailRepository.saveAll(productDetails);
+                this.comboDetailRepository.deleteAll(comboDetailExists);
+            }
 
             List<ComboDetail> listComboDetails = new ArrayList<>();
 
@@ -88,13 +114,14 @@ public class ComboServiceImpl implements ComboService {
                 listIdProductDetail.add(longValue);
             }
 
-            if(Objects.nonNull(comboRequestDTO.getIdCombo())){
-                productDetailsInCombo = productDetailsInCombo.stream().map(productDetail -> {
+            productDetailsInCombo = this.productDetailRepository.findAllByListIdProductDetail(listIdProductDetail);
+
+            if(comboRequestDTO.getIdStatus().equals(Status_Enum.EXISTS.getCode())){
+                productDetailsInCombo.stream().forEach(productDetail -> {
                     productDetail.setQuantity(productDetail.getQuantity()-comboRequestDTO.getQuantity());
-                    return productDetail;
-                }).collect(Collectors.toList());
-                this.productDetailRepository.saveAll(productDetailsInCombo);
+                });
             }
+            this.productDetailRepository.saveAll(productDetailsInCombo);
 
             Combo comboSaved = this.comboRepository.save(combo);
 
@@ -189,13 +216,21 @@ public class ComboServiceImpl implements ComboService {
 
             List<ProductDetail> productDetailsInCombo = this.productDetailRepository.findAllByListIdProductDetailAndSort(productDetailIds);
 
-            for (ProductDetail productDetail : productDetailsInCombo){
-                productDetail.setQuantity(productDetail.getQuantity()+combo.getQuantity());
+
+
+            if(combo.getIdStatus().equals(Status_Enum.DELETE.getCode())) {
+                for (ProductDetail productDetail : productDetailsInCombo){
+                    productDetail.setQuantity(productDetail.getQuantity()+combo.getQuantity());
+                }
+                combo.setQuantity(0);
+            }else{
+                for (ProductDetail productDetail : productDetailsInCombo){
+                    productDetail.setQuantity(productDetail.getQuantity()-combo.getQuantity());
+                }
             }
 
             this.productDetailRepository.saveAll(productDetailsInCombo);
 
-            combo.setQuantity(0);
 
             combo = comboRepository.save(combo);
 

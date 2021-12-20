@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -104,6 +105,13 @@ public class ColorServiceImpl implements ColorService{
 
         try {
             Color color = this.colorMapping.toEntity(colorDTO);
+
+            if(Objects.isNull(colorDTO.getIdColor())){
+                Color colorExists = this.colorRepository.findFirstByNameColor(colorDTO.getNameColor().trim().toLowerCase()).orElse(null);
+                if(Objects.nonNull(colorExists)){
+                    return new ServiceResult<>(HttpStatus.BAD_REQUEST, Notification.Color.SAVE_COLOR_FALSE, null);
+                }
+            }
 
             Color colorSaved = this.colorRepository.save(color);
 

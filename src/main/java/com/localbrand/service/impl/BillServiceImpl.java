@@ -435,7 +435,7 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public ServiceResult<List<BillResponseDTO>> getListBillAndSortAdmin(Optional<Integer> page, Optional<Integer> limit, Optional<Integer> sort, Optional<Integer> idStatus, Optional<Date> startDate, Optional<Date> endDate) {
+    public ServiceResult<List<BillResponseDTO>> getListBillAndSortAdmin(Optional<Integer> page, Optional<Integer> limit, Optional<Integer> sort, Optional<Integer> idStatus, Optional<Date> startDate, Optional<Date> endDate, Optional<Integer> billType) {
         log.error("Get list bill and filter");
 
         if(page.isEmpty() || page.get() < 0
@@ -457,9 +457,9 @@ public class BillServiceImpl implements BillService {
         List<Bill> listBill = new ArrayList<>();
 
         if(idStatus.isEmpty() || idStatus.get()<0){
-            listBill = this.billRepository.findAllByDate(startDate.get(), endDate.get(), pageable).toList();
+            listBill = this.billRepository.findAllByDate(startDate.get(), endDate.get(), billType.get(), pageable).toList();
         }else{
-            listBill = this.billRepository.findAllByDateAndIdStatus(idStatus.get(), startDate.get(), endDate.get(), pageable).toList();
+            listBill = this.billRepository.findAllByDateAndIdStatus(idStatus.get(), startDate.get(), endDate.get(), billType.get(), pageable).toList();
         }
 
         return new ServiceResult<>(HttpStatus.OK, Notification.Bill.GET_LIST_BILL_IS_SUCCESS, listBill.stream().map(this.billMapping::toDto).collect(Collectors.toList()));

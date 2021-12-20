@@ -3,6 +3,7 @@ package com.localbrand.controller;
 import com.localbrand.common.Interface_API;
 import com.localbrand.common.ServiceResult;
 import com.localbrand.dto.VoucherDTO;
+import com.localbrand.dto.VoucherDonate;
 import com.localbrand.dto.response.VoucherUserResponseDTO;
 import com.localbrand.service.VoucherUserService;
 import lombok.RequiredArgsConstructor;
@@ -31,10 +32,10 @@ public class VoucherUserController {
     }
 
     @GetMapping(Interface_API.API.VoucherUser.VOUCHER_USER_GET_DONATE)
-    public ResponseEntity<ServiceResult<VoucherDTO>> getListVoucherDonate(
+    public ResponseEntity<ServiceResult<VoucherDonate>> getListVoucherDonate(
             @RequestParam Optional<Float> totalMoney
     ){
-        ServiceResult<VoucherDTO> result = this.voucherUserService.getVoucherDonate(totalMoney);
+        ServiceResult<VoucherDonate> result = this.voucherUserService.getVoucherDonate(totalMoney);
         return ResponseEntity.status(result.getStatus()).body(result);
     }
 }

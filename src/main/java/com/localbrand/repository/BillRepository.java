@@ -25,9 +25,10 @@ public interface BillRepository extends JpaRepository<Bill, Long>, JpaSpecificat
     @Query(
             "select b from Bill b " +
                     " where "+
-                    " b.dateCreate between :startDate and :endDate"
+                    " b.dateCreate between :startDate and :endDate " +
+                    " and b.billType = :billType"
     )
-    Page<Bill> findAllByDate(Date startDate, Date endDate, Pageable pageable);
+    Page<Bill> findAllByDate(Date startDate, Date endDate, Integer billType, Pageable pageable);
 
     @Query(
             "select b from Bill b " +
@@ -40,8 +41,9 @@ public interface BillRepository extends JpaRepository<Bill, Long>, JpaSpecificat
     @Query(
             "select b from Bill b " +
                     " where b.idStatus = :idStatus " +
-                    " and b.dateCreate between :startDate and :endDate"
+                    " and b.dateCreate between :startDate and :endDate " +
+                    " and b.billType = :billType"
     )
-    Page<Bill> findAllByDateAndIdStatus(Integer idStatus, Date startDate, Date endDate,Pageable pageable);
+    Page<Bill> findAllByDateAndIdStatus(Integer idStatus, Date startDate, Date endDate, Integer billType,Pageable pageable);
 
 }

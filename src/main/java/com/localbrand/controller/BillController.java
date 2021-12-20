@@ -118,9 +118,10 @@ public class BillController {
             @RequestParam Optional<Integer> sort,
             @RequestParam Optional<Integer> idStatus,
             @RequestParam Optional<Date> startDate,
-            @RequestParam Optional<Date> endDate
+            @RequestParam Optional<Date> endDate,
+            @RequestParam Optional<Integer> billType
     ){
-        ServiceResult<List<BillResponseDTO>> result = this.billService.getListBillAndSortAdmin(page, limit, sort, idStatus, startDate, endDate);
+        ServiceResult<List<BillResponseDTO>> result = this.billService.getListBillAndSortAdmin(page, limit, sort, idStatus, startDate, endDate, billType);
         return ResponseEntity
                 .status(result.getStatus())
                 .body(result);

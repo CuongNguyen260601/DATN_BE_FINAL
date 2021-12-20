@@ -25,7 +25,7 @@ public class CategoryChildMapping implements Mapping<CategoryChildDTO, Category>
                 .builder()
                 .idCategory(categoryChildDTO.getIdCategory())
                 .parentId(categoryChildDTO.getParentId())
-                .nameCategory(categoryChildDTO.getNameCategory())
+                .nameCategory(categoryChildDTO.getNameCategory().trim())
                 .idStatus(categoryChildDTO.getIdStatus())
                 .build();
 

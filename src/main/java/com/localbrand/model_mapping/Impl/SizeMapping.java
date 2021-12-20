@@ -44,7 +44,7 @@ public class SizeMapping implements Mapping<SizeDTO, Size> {
         return Size
                 .builder()
                 .idSize(sizeDTO.getIdSize())
-                .nameSize(sizeDTO.getNameSize())
+                .nameSize(sizeDTO.getNameSize().trim())
                 .idCategory(sizeDTO.getIdCategory())
                 .idStatus(sizeDTO.getIdStatus())
                 .build();

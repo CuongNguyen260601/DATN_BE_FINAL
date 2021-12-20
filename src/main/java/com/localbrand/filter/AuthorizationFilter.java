@@ -55,13 +55,13 @@ public class AuthorizationFilter extends OncePerRequestFilter {
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Color.COLOR_FIND_EXISTS)
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Category.CATEGORY_TO_SIZE)
             || request.getServletPath().contains("/Image")
-            || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Category.Category_Child.CATEGORY_CHILD_FIND_BY_PARENT_ID)
+            || request.getServletPath().contains(Interface_API.MAIN+"/user/categories/child/findbyparent")
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.UPLOAD_IMAGE)
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Auth.GET_NEW_PASSWORD)
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Combo.COMBO_FIND_ALL_USER)
-            || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Combo.COMBO_FIND_BY_ID_USER)
+            || request.getServletPath().contains(Interface_API.MAIN+"/user/combos/findbyid")
             || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.Combo.COMBO_SEARCH_USER)
-
+            || request.getServletPath().equals(Interface_API.MAIN+Interface_API.API.ProductSale.PRODUCT_SALE_GET_LIST_USER)
         ){
             filterChain.doFilter(request, response);
         }else{
@@ -76,7 +76,12 @@ public class AuthorizationFilter extends OncePerRequestFilter {
                 new ObjectMapper().writeValue(response.getOutputStream(), error);
             }
 
-            Jwt jwt = this.jwtRepository.findFirstByJwtToken(refreshToken.trim()).orElse(null);
+            Jwt jwt;
+            if(Objects.nonNull(refreshToken)){
+                jwt = this.jwtRepository.findFirstByJwtToken(refreshToken.trim()).orElse(null);
+            }else{
+                jwt = null;
+            }
 
             if(Objects.isNull(jwt)){
                 response.setStatus(HttpStatus.UNAUTHORIZED.value());

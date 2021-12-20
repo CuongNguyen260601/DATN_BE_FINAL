@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ComboRepository extends JpaRepository<Combo, Long>, JpaSpecificationExecutor<Combo> {
 
@@ -37,4 +38,11 @@ public interface ComboRepository extends JpaRepository<Combo, Long>, JpaSpecific
             nativeQuery = true
     )
     List<Combo> findAllComboHot(Integer idStatus, Integer a);
+
+    @Query(
+            value = "select top 1 * from _Combo " +
+                    "    where lower(nameCombo) = lower(:nameCombo)",
+            nativeQuery = true
+    )
+    Optional<Combo> findFirstByNameCombo(String nameCombo);
 }

@@ -3,6 +3,7 @@ package com.localbrand.service.impl;
 import com.localbrand.common.ServiceResult;
 import com.localbrand.common.Status_Enum;
 import com.localbrand.dto.VoucherDTO;
+import com.localbrand.dto.VoucherDonate;
 import com.localbrand.dto.response.VoucherUserResponseDTO;
 import com.localbrand.entity.Voucher;
 import com.localbrand.model_mapping.Impl.VoucherMapping;
@@ -38,13 +39,20 @@ public class VoucherUserServiceImpl implements VoucherUserService {
     }
 
     @Override
-    public ServiceResult<VoucherDTO> getVoucherDonate(Optional<Float> totalMoney) {
-        Voucher voucherDonate = this.voucherRepository.findFirstByDonate(Status_Enum.EXISTS.getCode(),totalMoney.orElse(0F)).orElse(null);
+    public ServiceResult<VoucherDonate> getVoucherDonate(Optional<Float> totalMoney) {
+        Voucher voucherDonating = this.voucherRepository.findFirstByDonate(Status_Enum.EXISTS.getCode(),totalMoney.orElse(0F)).orElse(null);
+        Voucher voucherDonated = this.voucherRepository.findFirstByCondition(Status_Enum.EXISTS.getCode(),totalMoney.orElse(0F)).orElse(null);
 
-        if(Objects.nonNull(voucherDonate)){
-            return new ServiceResult<>(HttpStatus.OK, "Get voucher donate success", this.voucherMapping.toDto(voucherDonate));
-        }else{
-            return new ServiceResult<>(HttpStatus.OK, "Don't have voucher", null);
+        VoucherDonate voucherDonate = new VoucherDonate();
+
+        if(Objects.nonNull(voucherDonating)){
+            voucherDonate.setDonating(this.voucherMapping.toDto(voucherDonating));
         }
+
+        if(Objects.nonNull(voucherDonated)){
+            voucherDonate.setDonated(this.voucherMapping.toDto(voucherDonated));
+        }
+
+        return new ServiceResult<>(HttpStatus.OK, "Get voucher donate success", voucherDonate);
     }
 }

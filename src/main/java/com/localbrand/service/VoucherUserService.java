@@ -2,6 +2,7 @@ package com.localbrand.service;
 
 import com.localbrand.common.ServiceResult;
 import com.localbrand.dto.VoucherDTO;
+import com.localbrand.dto.VoucherDonate;
 import com.localbrand.dto.response.VoucherUserResponseDTO;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface VoucherUserService {
 
     ServiceResult<List<VoucherUserResponseDTO>> getListVoucherOfUser(Optional<Integer> idUser, Optional<Integer> page, Optional<Integer> limit);
 
-    ServiceResult<VoucherDTO> getVoucherDonate(Optional<Float> totalMoney);
+    ServiceResult<VoucherDonate> getVoucherDonate(Optional<Float> totalMoney);
 }

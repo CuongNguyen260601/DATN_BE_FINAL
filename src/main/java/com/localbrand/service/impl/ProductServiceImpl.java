@@ -36,6 +36,12 @@ public class ProductServiceImpl implements ProductService {
 
         Product product = this.productMapping.toEntity(productRequestDTO);
 
+        if(Objects.isNull(product.getIdProduct())){
+            Product productExists = this.productRepository.findFirstByNameProduct(product.getNameProduct().trim().toLowerCase()).orElse(null);
+            if(Objects.nonNull(productExists)){
+                return new ServiceResult<>(HttpStatus.BAD_REQUEST,"Save product false", null);
+            }
+        }
         List<ProductDetail> productDetailList = this.productMapping.toListProductDetail(product, productRequestDTO);
 
         product = this.productRepository.save(product);

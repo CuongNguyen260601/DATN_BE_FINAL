@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ColorRepository extends JpaRepository<Color, Long>, JpaSpecificationExecutor<Color> {
     Page<Color> findAll(Pageable pageable);
@@ -27,4 +28,11 @@ public interface ColorRepository extends JpaRepository<Color, Long>, JpaSpecific
                     " where p.idProduct = :idProduct)"
     )
     List<Color> findAllByIdProduct(Long idProduct);
+
+    @Query(
+            value = "select top 1 * from _Color " +
+                    " where lower(nameColor) = lower(:nameColor) ",
+            nativeQuery = true
+    )
+    Optional<Color> findFirstByNameColor(String nameColor);
 }

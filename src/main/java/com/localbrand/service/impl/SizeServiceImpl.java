@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,6 +33,7 @@ public class  SizeServiceImpl implements SizeService {
     private final Logger log = LoggerFactory.getLogger(SizeServiceImpl.class);
 
     private final SizeRepository sizeRepository;
+
     private final SizeMapping sizeMapping;
 
     @Override
@@ -111,9 +113,17 @@ public class  SizeServiceImpl implements SizeService {
         this.log.info("Save size: "+ sizeDTO);
 
         try {
+                if(Objects.isNull(sizeDTO.getIdSize())){
+                    Size sizeExists = this.sizeRepository.findFirstByIdCategoryAndNameSize(sizeDTO.getIdCategory().intValue(), sizeDTO.getNameSize().trim().toLowerCase()).orElse(null);
+
+                    if(Objects.nonNull(sizeExists)){
+                        return new ServiceResult<>(HttpStatus.BAD_REQUEST, Notification.Size.SAVE_SIZE_FALSE, null);
+                    }
+                }
                 Size size = this.sizeMapping.toEntity(sizeDTO);
 
                 Size sizeSaved = this.sizeRepository.save(size);
+
 
                 return new ServiceResult<>(HttpStatus.OK, Notification.Size.SAVE_SIZE_SUCCESS, this.sizeMapping.toDtoResponse(sizeSaved));
         }catch (Exception ex){

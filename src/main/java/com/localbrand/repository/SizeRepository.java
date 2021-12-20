@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SizeRepository extends JpaRepository<Size, Long>, JpaSpecificationExecutor<Size> {
     Page<Size> findAll(Pageable pageable);
@@ -35,5 +36,13 @@ public interface SizeRepository extends JpaRepository<Size, Long>, JpaSpecificat
                     " and pd.idStatus = 2)"
     )
     List<Size> findAllByIdProductAndIdColor(Long idProduct, Integer idColor);
+
+    @Query(
+            value = "select top 1 * from _Size "+
+            " where idCategory = :idCategory "+
+            " and lower(nameSize) = lower(:nameSize)",
+            nativeQuery = true
+    )
+    Optional<Size> findFirstByIdCategoryAndNameSize(Integer idCategory, String nameSize);
 
 }
